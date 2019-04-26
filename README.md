@@ -5,7 +5,6 @@ based on the number of points she enters.
 
 ![alt text](https://raw.githubusercontent.com/nbcc-wmad/2-generic-list-exercise-JT-Stevens/master/WireFrame.PNG)
 
-[https://github.com/nbcc-wmad/2-generic-list-exercise-JT-Stevens/blob/master/WireFrame.PNG](https://github.com/nbcc-wmad/2-generic-list-exercise-JT-Stevens/blob/master/WireFrame.PNG)
 The grading scale is as follows:  
 <pre>
 | Minimum points | Maximum points | Grade |
