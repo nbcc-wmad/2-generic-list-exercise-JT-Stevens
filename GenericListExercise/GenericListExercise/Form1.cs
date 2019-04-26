@@ -31,28 +31,12 @@ namespace GenericListExercise
         {
             try
             {
-                grade.MaxGrade = 299;
-                grade.GradeLetter = "F";
+                EnterGrade(299, "F");
+                EnterGrade(349, "D");
+                EnterGrade(399, "C");
+                EnterGrade(449, "B");
+                EnterGrade(500, "A");
 
-                AllGrades.Add(grade);
-
-                grade.MaxGrade = 349;
-                grade.GradeLetter = "D";
-
-                AllGrades.Add(grade);
-
-                grade.MaxGrade = 399;
-                grade.GradeLetter = "C";
-
-                AllGrades.Add(grade);
-
-                grade.MaxGrade = 449;
-                grade.GradeLetter = "B";
-
-                AllGrades.Add(grade);
-
-                grade.MaxGrade = 500;
-                grade.GradeLetter = "A";
 
                 AllGrades.Add(grade);
             }
@@ -61,7 +45,61 @@ namespace GenericListExercise
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+
+        private void EnterGrade(int maxGrade, string gradeLetter)
+        {
+            grade.MaxGrade = maxGrade;
+            grade.GradeLetter = gradeLetter;
+
+            AllGrades.Add(grade);
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            //Varify user entered int greater than 0
+            if (!uint.TryParse(txtScore.Text, out uint submittedGrade))
+            {
+                MessageBox.Show("Please enter a valid number");
+
+                txtScore.Focus();
+                txtScore.SelectAll();
+
+                return;
+            }
+
+            //Finds the maximum grade possible
+            int maximumGrade = 0;
+            foreach (Grades grade in AllGrades)
+            {
+                if (grade.MaxGrade > Convert.ToInt32(maximumGrade))
+                {
+                    maximumGrade = grade.MaxGrade;
+                }
+            }
+
+            //Varify if user entered value below maximum possible grade
+            if (submittedGrade > maximumGrade)
+            {
+                MessageBox.Show($"Entered grade must be below the maximum value of {maximumGrade}.");
+                return;
+            }
+
+            //Finds and displays grade assoicated with entered value.
+            foreach (Grades grade in AllGrades)
+            {
+                if (submittedGrade <= grade.MaxGrade)
+                {
+                    MessageBox.Show($"Grade letter for: {submittedGrade} {Environment.NewLine} " +
+                        $"is: {grade.GradeLetter}");
+
+                    txtScore.Focus();
+                    txtScore.SelectAll();
+
+                    return;
+                }
+            }
+        }
     }
-    
+
 
 }
