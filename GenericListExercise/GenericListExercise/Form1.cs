@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// Author: Jeremy Stevens
+// Date: 2019/04/27
+// Exercise: GenericList
+
 namespace GenericListExercise
 {
     public struct Grades
@@ -46,6 +50,11 @@ namespace GenericListExercise
             }
         }
 
+        /// <summary>
+        /// Enters maximum grade value and assoicated grade letter into the AllGrades ArrayList
+        /// </summary>
+        /// <param name="maxGrade"></param>
+        /// <param name="gradeLetter"></param>
         private void EnterGrade(int maxGrade, string gradeLetter)
         {
             grade.MaxGrade = maxGrade;
